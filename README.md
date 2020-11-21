@@ -20,7 +20,7 @@ Inserir recursivamente nodos na forma
       se vazio, nova arvore
       cc
         // ignorar nodos folha
-        buscar nodo (recursao) (busca ordenada?)
+        inserir: buscar nodo (recursao) (busca ordenada?)
           ate folha
           se nodo existir
             inserir filhos
