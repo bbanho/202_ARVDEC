@@ -1,0 +1,8 @@
+Febre Tosse Dor
+Dor S-Aspirina2 S-AssitirTV
+S-Aspirina2 X X
+S-AssitirTV X X
+Tosse S-Hospital S-Aspirina1
+S-Hospital X X
+S-Aspirina1 X X
+X X X
