@@ -16,31 +16,31 @@ double drand48(void);
 
 int main()
 {
-    time_t t1,t2,total;
-    double dado;
-    ArvBin* raiz = cria_ArvBin();
-    int i;
-
-    printf(">>> ARVORE BINARIA ORDENADA (ABO) <<<\n\n");
-    t1 = time(NULL);   // START TIMER
-
-    for(i=0; i < MAXDADOS; i++)
-    {
-        dado = drand48() * 1000;
-        printf("Dado (%d): %lf \x0D",i,dado);
-        insere_ArvBin(raiz,dado);
-    }
-
-    t2 = time(NULL);   // STOP TIMER
-    total = difftime(t2,t1);
-    printf ("\n\nTotal: %ld seg.\n",total);
-
-    // printf("Dados:\n");
-    // emOrdem_ArvBin(raiz);
-    printf("\n Altura Arvore: %d\n",altura_ArvBin(raiz));
-
-
-    libera_ArvBin(raiz);
+//    time_t t1,t2,total;
+//    double dado;
+//    ArvBin* raiz = cria_ArvBin();
+//    int i;
+//
+//    printf(">>> ARVORE BINARIA ORDENADA (ABO) <<<\n\n");
+//    t1 = time(NULL);   // START TIMER
+//
+//    for(i=0; i < MAXDADOS; i++)
+//    {
+//        dado = drand48() * 1000;
+//        printf("Dado (%d): %lf \x0D",i,dado);
+//        insere_ArvBin(raiz,dado);
+//    }
+//
+//    t2 = time(NULL);   // STOP TIMER
+//    total = difftime(t2,t1);
+//    printf ("\n\nTotal: %ld seg.\n",total);
+//
+//    // printf("Dados:\n");
+//    // emOrdem_ArvBin(raiz);
+//    printf("\n Altura Arvore: %d\n",altura_ArvBin(raiz));
+//
+//
+//    libera_ArvBin(raiz);
 
     return 0;
 }
