@@ -4,8 +4,6 @@ Decision tree using non-linear chained lists from Backes' literature
 
 ---
 
-Inserir recursivamente nodos na forma
-
     ref esq dir
     
     a b c <- nodo com ramo filho+filho
@@ -13,7 +11,7 @@ Inserir recursivamente nodos na forma
     s x x <- nodo saida
     x x x <- nodo folha
 
-    void findNode(NO* no, char *c, NO *return)
+    NO *findNode(NO* no, char *c, NO *return)
       if no->dt=='x'
         return NULL;
       if no->dt==c
