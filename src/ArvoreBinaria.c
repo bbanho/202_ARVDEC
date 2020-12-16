@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "ArvoreBinaria.h" //inclui os Prot?tipos
 
 ArvBin* cria_ArvBin(){
@@ -23,7 +25,7 @@ void libera_ArvBin(ArvBin* raiz){
     free(raiz);//libera a raiz
 }
 
-int insere_ArvBin(ArvBin* raiz, double valor){
+int insere_ArvBin(ArvBin* raiz, Tipo_Dado valor){
     if(raiz == NULL)
         return 0;
     struct NO* novo;
@@ -83,7 +85,7 @@ struct NO* remove_atual(struct NO* atual) {
     return no2;
 }
 // http://www.ime.usp.br/~pf/algoritmos/aulas/binst.html
-int remove_ArvBin(ArvBin *raiz, double valor){
+int remove_ArvBin(ArvBin *raiz, Tipo_Dado valor){
     if(raiz == NULL)
         return 0;
     struct NO* ant = NULL;
@@ -140,7 +142,7 @@ int altura_ArvBin(ArvBin *raiz){
         return(alt_dir + 1);
 }
 
-int consulta_ArvBin(ArvBin *raiz, double valor){
+int consulta_ArvBin(ArvBin *raiz, Tipo_Dado valor){
     if(raiz == NULL)
         return 0;
     struct NO* atual = *raiz;
@@ -161,7 +163,7 @@ void preOrdem_ArvBin(ArvBin *raiz)
     if(raiz == NULL)
         return;
     if(*raiz != NULL){
-        printf("%.5lf\n",(*raiz)->info);
+        printf("%s\n",(*raiz)->info);          // Info ? Int
         preOrdem_ArvBin(&((*raiz)->esq));
         preOrdem_ArvBin(&((*raiz)->dir));
     }
@@ -173,7 +175,7 @@ void emOrdem_ArvBin(ArvBin *raiz)
         return;
     if(*raiz != NULL){
         emOrdem_ArvBin(&((*raiz)->esq));
-        printf("%.5lf\n",(*raiz)->info);
+        printf("%s\n",(*raiz)->info);          // Info ? Int
         emOrdem_ArvBin(&((*raiz)->dir));
     }
 }
@@ -185,13 +187,13 @@ void posOrdem_ArvBin(ArvBin *raiz)
     if(*raiz != NULL){
         posOrdem_ArvBin(&((*raiz)->esq));
         posOrdem_ArvBin(&((*raiz)->dir));
-        printf("%.5lf\n",(*raiz)->info);
+        printf("%s\n",(*raiz)->info);         // Info ? Int
     }
 }
 
 // Funcoes Adicionais de Arvore
 
-void Procura_preOrdem_ArvBin(ArvBin *raiz, double valor, int *achou)
+void Procura_preOrdem_ArvBin(ArvBin *raiz, Tipo_Dado valor, int *achou)
 {
     if(raiz == NULL)
         return;
@@ -201,7 +203,7 @@ void Procura_preOrdem_ArvBin(ArvBin *raiz, double valor, int *achou)
     {
         if (valor == (*raiz)->info)
         {
-            printf("Achou: %.5lf! \n",(*raiz)->info);
+            printf("Achou: %s! \n",(*raiz)->info);   // Info ? Int
             *achou=1;
         }
         Procura_preOrdem_ArvBin(&((*raiz)->esq),valor,achou);
@@ -216,12 +218,12 @@ void Exibe_emOrdem_ArvBin(ArvBin *raiz)
 
     if(*raiz != NULL)
     {
-        printf("Atual: %.5lf - Vai para Esquerda \n",(*raiz)->info);
+        printf("Atual: %s - Vai para Esquerda \n",(*raiz)->info);   // Info ? Int
         Exibe_emOrdem_ArvBin(&((*raiz)->esq));
-        printf("Dado : %.5lf \n",(*raiz)->info);
-        printf("Atual: %.5lf - Vai para Direita \n",(*raiz)->info);
+        printf("Dado : %s \n",(*raiz)->info);
+        printf("Atual: %s - Vai para Direita \n",(*raiz)->info);    // Info ? Int
         Exibe_emOrdem_ArvBin(&((*raiz)->dir));
-        printf("Feito(%.5lf) \n",(*raiz)->info);
+        printf("Feito(%s) \n",(*raiz)->info);                       // Info ? Int
     }
     else
         printf("NULL\n");
