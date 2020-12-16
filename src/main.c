@@ -16,41 +16,39 @@ double drand48(void);
 
 int main()
 {
-    time_t t1,t2,total;
-    ArvBin* raiz = cria_ArvBin();
+    ArvBin *raiz = cria_ArvBin();
+
     char a[3],b[3],c[3];
 
-    t1 = time(NULL);   // START TIMER
+    NO *novo_no = newNode("A1","B1","B2");
 
-//    for(i=0; i < MAXDADOS; i++)
-//    {
-//        dado = drand48() * 1000;
-//        printf("Dado (%d): %lf \x0D",i,dado);
-//        insere_ArvBin(raiz,dado);
-//    }
-
-    NO *novo_no = newNode("A1","B1","C1");
-//    scanf("%s %s %s",a,b,c);
-//    while(strcmp(a,"x")!=0){
-//      scanf("%s %s %s\n",a,b,c);
-//      insertNode(raiz,novo_no);
-//      novo_no=newNode(a,b,c);
-//    }
-//
     insertNode(raiz,novo_no);
 
-    novo_no = newNode("B1","A2","C2");
+    novo_no = newNode("B1","S1","X");
     insertNode(raiz,novo_no);
 
-    char *ed, ch;
+    novo_no = newNode("B2","X","S2");
+    insertNode(raiz,novo_no);
+
+    novo_no = newNode("S1","X","X");
+    insertNode(raiz,novo_no);
+
+    novo_no = newNode("S2","X","X");
+    insertNode(raiz,novo_no);
+
+
+    char *ed, ch='\0';
+    int semfilhos=0;
+
     ed=(char *) malloc(3*sizeof(char));
-    printArv(raiz,0,ed,ch);
-  //
-    t2 = time(NULL);   // STOP TIMER
-    total = difftime(t2,t1);
-    printf ("\n\nTotal: %ld seg.\n",total);
-//
+
+    printArv(raiz,0,ed,ch,&semfilhos);
+
+
+    printf("%d %d\n",totalNO_ArvBin(raiz),semfilhos);
+    
     libera_ArvBin(raiz);
+
 
     return 0;
 }

@@ -6,26 +6,30 @@
 NO *newNode(Tipo_Dado ref, Tipo_Dado esq, Tipo_Dado dir){
 
   NO *no = (NO*) malloc(sizeof(NO));
-  no->esq = (NO*) malloc(sizeof(NO));
-  no->dir = (NO*) malloc(sizeof(NO));
 
   if(no==NULL)
     return NULL;
 
   no->info=ref;
-  no->esq->info=esq;
-  no->dir->info=dir;
+
+  if(strcmp(esq,"X")!=0){
+    no->esq = (NO*) malloc(sizeof(NO));
+    no->esq->info=esq;
+  }
+  
+  if(strcmp(dir,"X")!=0){
+    no->dir = (NO*) malloc(sizeof(NO));
+    no->dir->info=dir;
+  }                                      
 
   return no;
 }
 
 NO *findNode(ArvBin *raiz, Tipo_Dado info){
 
-  if(strcmp(info,"x")==0)
-    return NULL;
+  if(*raiz==NULL) return NULL;
 
-  if(*raiz==NULL) 
-    return NULL;
+  NO *ant = *raiz;
 
 //  printf("%s\n",(*raiz)->info);
   if(strcmp((*raiz)->info,info)==0){
@@ -34,6 +38,7 @@ NO *findNode(ArvBin *raiz, Tipo_Dado info){
 
   } else {
 
+
     if((*raiz)->esq!=NULL) 
       return findNode(&((*raiz)->esq),info);
 
@@ -41,7 +46,6 @@ NO *findNode(ArvBin *raiz, Tipo_Dado info){
       return findNode(&((*raiz)->dir),info);
   }
   
-  return NULL;
 }
 
 int insertNode(ArvBin *raiz, NO *no){
@@ -57,16 +61,17 @@ int insertNode(ArvBin *raiz, NO *no){
   // encontra no
   NO *fn = findNode(raiz,no->info);
 
-  printf("encontrou: %s\n",fn->info);
+  if(fn==NULL)
+    return 1;
 
-  //  encontra pos vazia
+  printf("encontrou: %s\n",fn->info);
 
   *fn=*no;
 
   return 0;
 }
 
-void printArv(ArvBin *raiz, int n, char *ed, char ch){
+void printArv(ArvBin *raiz, int n, char *ed, char ch, int *semfilhos){
 
   if(raiz==NULL)
     return;
@@ -78,24 +83,28 @@ void printArv(ArvBin *raiz, int n, char *ed, char ch){
       ch='E';
       strncat(ed,&ch,1);
     }
+
     if((*raiz)->dir) {
       n++;
       ch='D';
       strncat(ed,&ch,1);
     } 
+
     if(n==0){
+      (*semfilhos)++;
       ch='F';
       strncat(ed,&ch,1);
     }
 
-    printf("%s: %d (%s)\n",(*raiz)->info,n,ed);
+    if(strcmp((*raiz)->info,"X")!=0) printf("%s: %d (%s)\n",(*raiz)->info,n,ed);
 
     // reset
     n=0;
     strcpy(ed,"");
 
-    printArv(&((*raiz)->esq),n,ed,ch);
-    printArv(&((*raiz)->dir),n,ed,ch);
+    printArv(&((*raiz)->esq),n,ed,ch,semfilhos);
+    printArv(&((*raiz)->dir),n,ed,ch,semfilhos);
+
   }
 
 }
