@@ -16,9 +16,8 @@ double drand48(void);
 
 int main()
 {
-    ArvBin *raiz = cria_ArvBin();
-
-    char a[3],b[3],c[3];
+    ArvBin* raiz = cria_ArvBin();
+//    char a[3],b[3],c[3];
 
     NO *novo_no = newNode("A1","B1","B2");
 
@@ -35,6 +34,17 @@ int main()
 
     novo_no = newNode("S2","X","X");
     insertNode(raiz,novo_no);
+
+
+//    NO *novo_no;
+//
+//    scanf("%s %s %s",a,b,c);
+//    while(strcmp(a,"X")!=0){
+//      fflush(stdin);
+//      scanf("%s %s %s",a,b,c);
+//      novo_no=newNode(a,b,c);
+//      insertNode(raiz,novo_no);
+//    }
 
 
     char *ed, ch='\0';

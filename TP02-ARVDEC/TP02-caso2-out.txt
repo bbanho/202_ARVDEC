@@ -1,8 +1,0 @@
-Febre 2 ED
-Tosse 2 ED
-S-Hospital 0 F
-S-Aspirina1 0 F
-Dor 2 ED
-S-Aspirina2 0 F
-S-AssitirTV 0 F
-7 4
