@@ -29,15 +29,12 @@ NO *findNode(ArvBin *raiz, Tipo_Dado info){
 
   if(*raiz==NULL) return NULL;
 
-  NO *ant = *raiz;
-
 //  printf("%s\n",(*raiz)->info);
   if(strcmp((*raiz)->info,info)==0){
 //      printf("%s\n",(*raiz)->info);
     return *raiz;
 
   } else {
-
 
     if((*raiz)->esq!=NULL) 
       return findNode(&((*raiz)->esq),info);
@@ -58,11 +55,11 @@ int insertNode(ArvBin *raiz, NO *no){
     return 0;
   }
 
-  // encontra no
+  // encontra endereco do no
   NO *fn = findNode(raiz,no->info);
 
   if(fn==NULL)
-    return 1;
+    return 1; // erro
 
   printf("encontrou: %s\n",fn->info);
 
@@ -96,7 +93,7 @@ void printArv(ArvBin *raiz, int n, char *ed, char ch, int *semfilhos){
       strncat(ed,&ch,1);
     }
 
-    if(strcmp((*raiz)->info,"X")!=0) printf("%s: %d (%s)\n",(*raiz)->info,n,ed);
+     printf("%s: %d (%s)\n",(*raiz)->info,n,ed);
 
     // reset
     n=0;
